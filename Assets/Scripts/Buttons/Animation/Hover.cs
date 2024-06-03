@@ -1,7 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using DG.Tweening;
 
 public class Hover : MonoBehaviour
@@ -9,6 +6,7 @@ public class Hover : MonoBehaviour
     public float hoverAlpha = 0.5f;
     public float normalAlpha = 1f;
     private Renderer _renderer;
+    public float duration = 1f;
 
     void Start()
     {
@@ -17,11 +15,11 @@ public class Hover : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        _renderer.material.DOFade(hoverAlpha, 0.1f);
+        _renderer.material.DOFade(hoverAlpha, duration);
     }
 
     private void OnMouseExit()
     {
-        _renderer.material.DOFade(normalAlpha, 0.1f);
+        _renderer.material.DOFade(normalAlpha, duration);
     }
 }

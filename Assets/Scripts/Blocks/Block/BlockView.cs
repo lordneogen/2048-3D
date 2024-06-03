@@ -3,57 +3,79 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BlockView:MonoBehaviour
 {
+    [Header("Текст")]
     [SerializeField] private List<GameObject> _textMeshPros;
+    [Header("Цвета")]
     [SerializeField] private List<Color> _colors;
-    [SerializeField] private int indexColor = 0;
-    [HideInInspector] public Renderer Renderer;
-
+    [SerializeField] private Color _disable;
+    [SerializeField] private int indexColor;
+    public BlockAnimation _BlockAnimation;
+    public Renderer Renderer;
+    public ParticleSystem Freeze;
     private void Start()
     {
-        Renderer = GetComponent<Renderer>();
-        transform.localScale = Vector3.zero;
-        transform.DOScale(Vector3.one*0.24f, 0.1f);
+        _BlockAnimation.delay = EventManager.Instance.Speed;
+        InvokeRepeating("UpdateTextRotation",0,0.1f);
+        UpdateColor();
     }
 
-    private void Update()
+    public void UpdateColor()
     {
-        UpdateText();
+        _BlockAnimation._start = GetComponent<MeshRenderer>().material.color;
     }
-
-    private void UpdateText()
+    private void UpdateTextRotation()
     {
         for (int i = 0; i < _textMeshPros.Count; i++)
         {
-            Vector3 result = Camera.main.transform.eulerAngles;
-            Vector3 initial = _textMeshPros[i].transform.rotation.eulerAngles;
-            result.x = initial.x;
-            result.y = initial.y;
-            // result.z = initial.z;
-            _textMeshPros[i].transform.rotation = Quaternion.Euler(result);
+                Vector3 result = Camera.main.transform.eulerAngles;
+                Vector3 initial = _textMeshPros[i].transform.rotation.eulerAngles;
+                result.x = initial.x;
+                result.y = initial.y;
+                _textMeshPros[i].transform.rotation = Quaternion.Euler(result);
         }
     }
 
-    private void SetText(string text)
+    private void SetTextNumber(string text)
     {
         for (int i = 0; i < _textMeshPros.Count; i++)
-        { 
-            _textMeshPros[i].GetComponent<TextMeshPro>().SetText(text);
+        {
+            _textMeshPros[i].GetComponent<TextMeshPro>().SetText(text); 
         }
     }
 
-    private void SetColor()
+    private void SetColorIndex()
     {
-        indexColor += 1;
         Renderer.material.color = _colors[indexColor];
-        // material.color = _colors[indexColor];
     }
 
-    public void Increase(int num)
+    public void IncreaseView(int num)
     {
-        SetText(num.ToString());
-        SetColor();
+        indexColor = (int)Math.Log(num, 2);
+        UpdateColor();
+        SetTextNumber(num.ToString());
+        SetColorIndex();
+        EventManager.Instance.audioManager.Play(EventManager.Instance.audioManager.ScoreUPClip);
+        _BlockAnimation._start=_BlockAnimation._start = GetComponent<MeshRenderer>().material.color;
+        _BlockAnimation.Shake(transform,0);
+    }
+
+    public void DisableView()
+    {
+        SetTextNumber("x");
+        EventManager.Instance.audioManager.Play(EventManager.Instance.audioManager.FrezeClip);
+        Renderer.material.color = _disable;
+        _BlockAnimation._start=_BlockAnimation._start = GetComponent<MeshRenderer>().material.color;
+        _BlockAnimation.Shake(transform,0);
+        Freeze.Play();
+    }
+
+    private void OnEnable()
+    {
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one*0.24f, 0.1f);
     }
 }

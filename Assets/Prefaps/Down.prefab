@@ -124,6 +124,7 @@ MonoBehaviour:
   y: 0
   z: 0
   flip: 1
+  reload: 0.21
 --- !u!114 &218740967918538936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829ce3cd92446c09b151641f5c6040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverAlpha: 0.9
-  normalAlpha: 0.3
+  hoverAlpha: 1
+  normalAlpha: 0.5
+  duration: 2
 --- !u!1 &2018226469936152443
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +348,7 @@ MonoBehaviour:
   y: 0
   z: 0
   flip: 1
+  reload: 0.21
 --- !u!114 &754843288846947478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829ce3cd92446c09b151641f5c6040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverAlpha: 0.9
-  normalAlpha: 0.3
+  hoverAlpha: 1
+  normalAlpha: 0.5
+  duration: 2
 --- !u!1 &4025698366274933539
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +488,7 @@ MonoBehaviour:
   y: 0
   z: 0
   flip: 1
+  reload: 0.21
 --- !u!114 &572983893554129990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,8 +501,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829ce3cd92446c09b151641f5c6040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverAlpha: 0.9
-  normalAlpha: 0.3
+  hoverAlpha: 1
+  normalAlpha: 0.5
+  duration: 2
 --- !u!1 &5610613691898192769
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +628,7 @@ MonoBehaviour:
   y: 0
   z: 0
   flip: 1
+  reload: 0.21
 --- !u!114 &2065344085529542697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,8 +641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829ce3cd92446c09b151641f5c6040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverAlpha: 0.9
-  normalAlpha: 0.3
+  hoverAlpha: 1
+  normalAlpha: 0.5
+  duration: 2
 --- !u!1 &6253248276514554972
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +804,7 @@ MonoBehaviour:
   y: 1
   z: 0
   flip: 0
+  reload: 0.21
 --- !u!114 &1277827702326690634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,5 +817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d829ce3cd92446c09b151641f5c6040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverAlpha: 0.9
-  normalAlpha: 0.3
+  hoverAlpha: 1
+  normalAlpha: 0.5
+  duration: 2

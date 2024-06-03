@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -5,7 +6,6 @@ public class Block : MonoBehaviour
 {
     [HideInInspector] public BlockView BlockView;
     [HideInInspector] public BlockModule BlockModule;
-    [HideInInspector] public bool Used;
 
     private void Awake()
     {
